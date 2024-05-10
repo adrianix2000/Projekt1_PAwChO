@@ -4,6 +4,7 @@ const axios = require('axios');
 
 const server = express();
 
+// constants
 const PORT = 4000;
 const AUTHOR = 'Adrian Sak'
 
@@ -12,12 +13,14 @@ function getStartedInfo() {
     return `The server is starting on port ${PORT} at ${currentDate.toLocaleString()}, owner: ${AUTHOR}`;
 }
 
+// fetching client public ip address using public-ip package
 async function getClientPublicIpAddress() {
     const clientAddress = await ipGetter.v4();
     console.log('current client public ipv4 address: ',  clientAddress);
     return clientAddress;
 }
 
+// fetching client data based on ip address using ipapi.co API
 async function getClientDataBasedOnIp(ipAddress) {
 
     let clientIpAddress = await getClientPublicIpAddress();
@@ -30,6 +33,8 @@ async function getClientDataBasedOnIp(ipAddress) {
     };
 }
 
+
+// preoaring html response with client data based on fetched data 
 async function prepareHTMLResponse() {
 
     let responseData = await getClientDataBasedOnIp();
@@ -82,6 +87,7 @@ async function prepareHTMLResponse() {
     return htmlResponse;
 }
 
+// main endpoint
 server.get('/', async (req, res) => {
     try {
         const htmlResponse = await prepareHTMLResponse();
