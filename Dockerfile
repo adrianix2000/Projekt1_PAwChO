@@ -41,4 +41,4 @@ CMD ["node", "server.js"]
 
 # adding healthcheck for controlling the container status
 HEALTHCHECK --interval=10s --timeout=6s \
-    CMD curl -f http://localhost:4000/ || exit 1
+    CMD curl -f http://localhost:4000

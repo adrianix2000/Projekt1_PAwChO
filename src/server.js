@@ -1,6 +1,6 @@
 const express = require('express');
-const ipGetter = require('public-ip');
 const axios = require('axios');
+
 
 const server = express();
 
@@ -15,15 +15,19 @@ function getStartedInfo() {
 
 // fetching client public ip address using public-ip package
 async function getClientPublicIpAddress() {
-    const clientAddress = await ipGetter.v4();
-    console.log('current client public ipv4 address: ',  clientAddress);
-    return clientAddress;
+    return await axios.get('https://api.ipify.org?format=json').then((response) => {
+        console.log("dsfdsf: " + response.data.ip);
+        return response.data.ip;
+    });
 }
 
 // fetching client data based on ip address using ipapi.co API
 async function getClientDataBasedOnIp(ipAddress) {
 
     let clientIpAddress = await getClientPublicIpAddress();
+
+    console.log("client ip: " + clientIpAddress);
+
     const response = await axios.get(`https://ipapi.co/${clientIpAddress}/timezone`);
 
     return {
