@@ -37,3 +37,9 @@ EXPOSE 4000
 
 WORKDIR /usr/app/src
 CMD ["node", "server.js"]
+
+# adding healthcheck for controlling the container status
+HEALTHCHECK --interval=60s --timeout=15s \
+    CMD curl -f http://localhost:4000
+
+
