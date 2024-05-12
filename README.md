@@ -71,6 +71,10 @@ docker logs timezone_container
 
 ![](./previews/step1/docker_logs.png)
 
+In the end, you can make sure that the image does not contain any high and critical errors, using docker scout.
+
+![](./previews/step1/docker_sout.png)
+
 
 
 
