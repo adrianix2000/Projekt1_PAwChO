@@ -16,7 +16,7 @@ function getStartedInfo() {
 // fetching client public ip address using public-ip package
 async function getClientPublicIpAddress() {
     return await axios.get('https://api.ipify.org?format=json').then((response) => {
-        console.log("dsfdsf: " + response.data.ip);
+        // console.log("dsfdsf: " + response.data.ip);
         return response.data.ip;
     });
 }

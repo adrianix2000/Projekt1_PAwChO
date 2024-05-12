@@ -40,5 +40,5 @@ EXPOSE 4000
 CMD ["node", "server.js"]
 
 # adding healthcheck for controlling the container status
-HEALTHCHECK --interval=10s --timeout=6s \
+HEALTHCHECK --interval=60s --timeout=15s \
     CMD curl -f http://localhost:4000
