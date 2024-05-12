@@ -1,11 +1,11 @@
-## Extended stage of the project.
+# Extended stage of the project.
 
 
-### Dockerfile modifications 
+## Dockerfile modifications 
 In this part of the project development, it was necessary to use source code located in a remote GitHub repository. In the first stage of building in Dockerfile2, to access the remote repository, it was necessary to install Git and the OpenSSH client. Using ssh-keyscan, it was necessary to add the GitHub host key to the 'known_hosts' file and finally clone the repository with the code
 
 
-### Building image process
+## Building image process
 At the beginning, before starting to build the image, it was necessary to create a new builder for the buildx tool. By using the docker-container driver, we enable multi-platform image building. The bootstrap option allows the initialization of the builder so it is immediately running, and --use specifies the created builder as the default one.
 
 command to create new builder, and at the screen we can see that created builder is default (it has * sign):
@@ -27,3 +27,23 @@ building without cache logs:
 
 building with cache logs:
 ![](./previews/step2/importing_cache.png)
+
+## Running image 
+
+You can download image from my DockerHub using following command:
+
+```bash
+docker pull monio359/timezonegetter:1.0.0
+```
+
+And next run container using following command, this time i used port 8080 for difference:
+```bash
+docker run -d -p 8080:4000 --name extended_project  monio359/timezonegetter:1.0.0 
+```
+
+### How it's looks like:
+
+![](./previews/step2/working_extended_app.png)
+
+
+
