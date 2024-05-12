@@ -7,7 +7,7 @@
 
 </center>
 
-The goal of the project was to create a simple application that, based on the client's IP address, would display information about their time zone and current time and then deploying it in Docker.
+The goal of the project was to create a simple application that, based on the client's IP address, would display information about their time zone and current time and then deploying it in Docker. Application use external api's to [fetching public ip address](https://api.ipify.org/?format=json) and based on it [fetching timezone of a client](https://ipapi.co/timezone). To fetching external api's i use axios and for creating simple web server i use express.
 
 <center>
 
